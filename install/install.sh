@@ -10,9 +10,19 @@ then
     pip install --user -r $HOME/bin/IC_lunch/requirements.txt
 fi
 
-echo -e "Add the following to your .zshrc or .bashrc file (or whatever analogue for your own shell)\n"
-echo -e "########################################################\n"
-cat $( dirname  $( dirname $( readlink -f $0 ) ) )/.add_path_example.txt
-echo -e "\n########################################################\n\n"
+mv $( dirname $( readlink -f $0 ) )/.add_path_example.txt $HOME/.path_adder
 
+if [ -f $HOME/.bashrc ]
+then
+    echo 'source $HOME/.path_adder' >> $HOME/.bashrc
+fi
 
+if [ -f $HOME/.zshrc ]
+then
+    echo 'source $HOME/.path_adder' >> $HOME/.zshrc
+fi
+
+if [ -f $HOME/.cshrc  ]
+then
+    echo 'source $HOME/.path_adder' >> $HOME/.cshrc
+fi
