@@ -1,3 +1,3 @@
 # IC_lunch
 
-Script to get Imperial College lunch menus from the terminal
+Scripts to get Imperial College lunch menus from the terminal
