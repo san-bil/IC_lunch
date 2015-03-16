@@ -17,4 +17,4 @@ main_items=soup.find("table",{"id":"rg588883"}).find("div",{"id":"main-content"}
 for item in main_items:
     txt = item.get_text()
     if (not ("allergy" in txt or "Allergy" in txt or "served" in txt)) and len(txt)>6:
-        print item.get_text()
+        print "\t"+item.get_text()
