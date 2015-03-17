@@ -1,0 +1,7 @@
+pathadd() {
+    if [ -d "$1" ] && [[ ":$PATH:" != *":$1:"* ]]; then
+        PATH="${PATH:+"$PATH:"}$1"
+    fi
+}
+
+for tmpf in `ls $HOME/bin`; do pathadd $HOME/bin/$tmpf;done;
