@@ -3,4 +3,5 @@
 echo "HBar Menu:"
 python $( dirname $( readlink -f $0 ) )/hbar_retriever.py
 
-
+echo "Fuel Menu:"
+python $( dirname $( readlink -f $0 ) )/fuel_retriever.py
