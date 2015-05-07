@@ -1,4 +1,5 @@
 import pycurl
+import re
 from StringIO import StringIO
 from bs4 import BeautifulSoup
 
@@ -12,12 +13,10 @@ c.close()
 body = buffer.getvalue()
 soup = BeautifulSoup(body)
 
-main_items=soup.find("div",{"class":"generic-content-block"}).find_all("strong")
+main_items=soup.find("div",{"class":"generic-content-block"}).find_all('p')
 
 for item in main_items:
     if not item is None:
         txt = item.get_text()
-        next_item = item.next_sibling
-        if (not ("allergy" in txt or "Allergy" in txt or "served" in txt)) and len(txt)>6 and (not next_item is None) and (not "Week" in txt):
-            to_print = "\t"+(item.get_text().encode('utf-8')+(next_item.encode('utf-8'))).split("(")[0].strip()
-            print to_print
+        if (("of the day" in txt) or ("of the Day" in txt)) and ("-" in txt):
+            print "\t"+txt.lstrip()
