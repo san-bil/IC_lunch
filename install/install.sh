@@ -8,7 +8,7 @@ cp -R $( dirname $( dirname $( readlink -f $0 ) ) )/* $HOME/bin/IC_lunch/
 echo -e "Installing requirements...\n"
 pip install --user beautifulsoup4
 
-mv $( dirname $( readlink -f $0 ) )/path_add $HOME/.path_add
+cp $( dirname $( readlink -f $0 ) )/path_add $HOME/.path_add
 
 if [ -f $HOME/.bashrc ]
 then
