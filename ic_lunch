@@ -1,10 +1,27 @@
 #!/bin/bash
 
-echo "HBar Menu:"
-python2 $( dirname $( readlink -f $0 ) )/hbar_retriever.py
+function hbar {
+    echo "HBar Menu:"
+    python2 $( dirname $( readlink -f $0 ) )/hbar_retriever.py
+}
 
-echo "Fuel Menu:"
-python2 $( dirname $( readlink -f $0 ) )/fuel_retriever.py
+function fuel {
+    echo "Fuel Menu:"
+    python2 $( dirname $( readlink -f $0 ) )/fuel_retriever.py
+}
 
-echo "SCR Menu:"
-python2 $( dirname $( readlink -f $0 ) )/scr_retriever.py
+function scr {
+    echo "SCR Menu:"
+    python2 $( dirname $( readlink -f $0 ) )/scr_retriever.py
+}
+
+if [ "$#" == 0 ]; then
+    hbar
+    fuel
+    scr
+else
+    for var in "$@"
+    do
+        $var
+    done    
+fi
